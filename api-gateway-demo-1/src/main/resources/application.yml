@@ -1,0 +1,21 @@
+server :
+  port : 8080
+  
+
+spring :
+  application :
+    name : api-gateway-demo-1
+
+  cloud :
+    gateway :
+      routes :
+        - id : employeeModule
+          uri : http://localhost:8081/
+          predicates :
+            - Path=/employee/**
+
+        - id : consumerModule
+          uri : http://localhost:8082/
+          predicates :
+            - Path=/consumer/**
+
